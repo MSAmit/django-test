@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for post in object_list %}
+
+<h2 {{post.title}} />
+
+<div class = "post_meta"
+ on {{post.createdDate}}
+/>
+
+<div class = "post_body"
+	{{post.body|safe|linebr}}
+/>
+
+</div class = "tags"
+	{% for tag in post.tags.all %}
+	<a href = "blog/tag/{{tags}}" {{tag}} />
+	{% if not forloop.last %} , {% endif %}
+	{% endfor %}
+/>
+{% endfor %}
+
+{% endblock %}
